@@ -1,0 +1,11 @@
+.sec{
+    border: 2px solid red;
+    background: #000;
+    height: 10vh;
+    position: fixed;
+    overflow: hidden;
+
+}
+.main{
+    margin-top: 10vh;
+}

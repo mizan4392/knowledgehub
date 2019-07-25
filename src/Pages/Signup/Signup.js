@@ -1,13 +1,28 @@
 import React, { Component } from 'react'
 import './Signup.css';
+import Particles from 'react-particles-js';
+
+
+const params={
+     particles: {
+       number:{
+         value:40,
+         density:{
+           enable:true,
+           value_area:200
+         }
+       }
+     }
+}
 
 
 class Signup extends Component {
     render() {
         return (
             <div className="bg">
+               <Particles params={params} className='particales'/>
             <div className=" container-fluid">
-               <form className="form-group form-container">
+               <form className="form-group form-container container">
                     <h1 className="text-center Label">User SignUp</h1>
                    <div className="row">
                        <div className="col-md-6">

@@ -1,0 +1,25 @@
+.card-section{
+    margin-top: 6px;
+    margin-bottom: 6px;;
+}
+.btn-style{
+    display: flex;
+    justify-content: space-between;
+    color: black !important;
+}
+.text-style{
+    color: black;
+}
+.user-style{
+    font-size: 15px;
+}
+.post-time{
+    font-size: 10px;
+}
+.test-grid{
+ flex-wrap: nowrap !important;
+}
+.btn-bg{
+    background: none;
+    background-image: url("../../assets/drop-down.png") !important;
+}

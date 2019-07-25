@@ -1,11 +1,27 @@
 import React, { Component } from 'react'
 import './Login.css';
+import Particles from 'react-particles-js';
+
+
+const params={
+    particles: {
+      number:{
+        value:40,
+        density:{
+          enable:true,
+          value_area:200
+        }
+      }
+    }
+  }
+
 
 
 class Login extends Component {
     render() {
         return (
             <div className="bg container-fluid">
+              <Particles params={params} className='particales'/>
                 <div className="row">
                     <div className="col-md-4 col-sm-4 col-xs-12"></div>
                     <div className="col-md-4 col-sm-4 col-xs-12">
