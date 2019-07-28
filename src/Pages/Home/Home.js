@@ -12,7 +12,13 @@ class Home extends Component {
                         <Post />
                         <Post />
                     </div>
-                    <div className="col-md-4 col-sm-4 sec text-center">Profile</div> 
+                    <div className="col-md-4 col-sm-4 text-center">
+                        <div className="card text-center container">
+                            <img src="" alt="Profie Image"></img>
+                            <h6 className="text-style">User Name</h6>
+                            <h6 className="text-style">Join Date</h6>
+                        </div>
+                    </div> 
                 </div>
             </div>
         )

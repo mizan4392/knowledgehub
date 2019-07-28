@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Post.css';
-import dropDownIcon from '../../assets/drop-down.png';
+
 
 
 
@@ -19,7 +19,7 @@ class Post extends Component {
                                 <p className="text-style post-time">Just Now</p>
                             </div>
                             <div className="col-md-1 test-grid col-sm-1">
-                                <button className="btn-bg"></button>
+                                <input type="button" className="btn-bg"></input>
                             </div>
                         </div>
                     </div>
@@ -28,7 +28,7 @@ class Post extends Component {
                             <p class="card-text text-left text-style">Place some text for the service 1 here. Place some text for the service 1 here. Place some text for the service 1 here.</p>
                         </div>
                         <div class="card-footer text-right text-danger btn-style">
-                        <a href="#" class=""></a>
+                        <a href="#" class="">Love</a>
                          <a href="#" class=" ">Comment</a>
                          <a href="#" class=" ">Share</a>
                         </div>       
