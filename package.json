@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
+    "dayjs": "^1.8.15",
+    "jwt-decode": "^2.2.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
     "react-dom": "^16.8.6",
@@ -31,5 +34,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "https://us-central1-knowledgehub-67e03.cloudfunctions.net/api"
 }

@@ -22,4 +22,8 @@
     left: 0;
     left: 0;
     z-index: 0;
-  }
+}
+.alert{
+    color: red !important;
+    font-size: .8rem;
+}

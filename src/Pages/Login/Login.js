@@ -1,49 +1,108 @@
-import React, { Component } from 'react'
-import './Login.css';
-import Particles from 'react-particles-js';
+import React, { Component } from "react";
+import axios from 'axios';
+import "./Login.css";
+import Particles from "react-particles-js";
 
 
-const params={
-    particles: {
-      number:{
-        value:40,
-        density:{
-          enable:true,
-          value_area:200
-        }
+const params = {
+  particles: {
+    number: {
+      value: 40,
+      density: {
+        enable: true,
+        value_area: 200
       }
     }
   }
-
-
+};
 
 class Login extends Component {
-    render() {
-        return (
-            <div className="bg container-fluid">
-              <Particles params={params} className='particales'/>
-                <div className="row">
-                    <div className="col-md-4 col-sm-4 col-xs-12"></div>
-                    <div className="col-md-4 col-sm-4 col-xs-12">
-                          <form className="form-container">
-                            <h1>User Login</h1>
-                            <div className="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-                            </div>
-                            <div className="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
-                            </div>
-                            <button type="submit" className="btn btn-success btn-block">Login</button>
-                        </form>
-                        
-                    </div>
-                    <div className="col-md-4 col-sm-4 col-xs-12"></div>
-                </div>
-                
-            </div>
-        )
+
+  state = {
+    email: "",
+    password: "",
+    loading: false,
+    errors: {}
+  };
+
+  handleSubmit=(e)=>{
+    e.preventDefault();
+    this.setState({loading:true});
+
+    let userData ={
+      email:this.state.email,
+      password:this.state.password
     }
+    axios.post('https://us-central1-knowledgehub-67e03.cloudfunctions.net/api/login',userData)
+      .then(res =>{
+        console.log(res);
+        localStorage.setItem('FBIdtoken',`Auth ${res.data.token}`)
+        this.setState({loading:false})
+        this.props.history.push('/');
+      })
+      .catch(err =>{
+        this.setState({
+          errors:err.response.data,
+          loading:false
+        })
+      })
+
+  }
+
+  handleChange = (e)=>{
+    this.setState({[e.target.name]:e.target.value})
+  }
+
+  render() {
+
+    const {errors,loading} = this.state;
+    return (
+      <div className="bg container-fluid">
+        <Particles params={params} className="particales" />
+        <div className="row">
+          <div className="col-md-4 col-sm-4 col-xs-12" />
+          <div className="col-md-4 col-sm-4 col-xs-12">
+            <form className="form-container" onSubmit={this.handleSubmit}>
+              <h1>User Login</h1>
+              <div className="form-group">
+                <label htmlFor="exampleInputEmail1">Email address</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={this.state.email}
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="exampleInputPassword1">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="Password"
+                  onChange={this.handleChange}
+                />
+              </div>
+              {errors.general && (
+                <p className='alert'>
+                  {errors.general}
+                </p>
+              ) }
+              <button type="submit" className="btn btn-success btn-block">
+                Login
+              </button>
+            </form>
+          </div>
+          <div className="col-md-4 col-sm-4 col-xs-12" />
+        </div>
+      </div>
+    );
+  }
 }
 export default Login;
