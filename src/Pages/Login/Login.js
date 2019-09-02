@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./Login.css";
 import Particles from "react-particles-js";
+//redux
+import { connect } from "react-redux";
+import loginUser from "../../redux/actions/userAction";
 
-
-// ParticalJs params 
+// ParticalJs params
 const params = {
   particles: {
     number: {
@@ -21,36 +22,23 @@ class Login extends Component {
   state = {
     email: "",
     password: "",
-    loading: false,
     errors: {}
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({ errors: nextProps.UI.errors });
+    }
+  }
+
   handleSubmit = e => {
     e.preventDefault();
-    //setting the loding state true for show a spinner on button
-    this.setState({loading:true});
     let userData = {
       email: this.state.email,
       password: this.state.password
     };
-    // api request to login route with email and password
-    axios
-      .post(
-        "https://us-central1-knowledgehub-67e03.cloudfunctions.net/api/login",
-        userData
-      )
-      .then(res => {
-        localStorage.setItem("FBIdtoken", `Auth ${res.data.token}`);
-        // this.setState({loading:false})
-        // Changing the route to root route
-        this.props.history.push("/");
-      })
-      .catch(err => {
-        this.setState({
-          errors: err.response.data,
-          loading: false
-        });
-      });
+
+    this.props.loginUser(userData, this.props.history);
   };
   //setting the form value to state
   handleChange = e => {
@@ -58,7 +46,7 @@ class Login extends Component {
   };
 
   render() {
-    const { errors, loading } = this.state;
+    const { errors } = this.state;
     return (
       <div className="bg container-fluid">
         <Particles params={params} className="particales" />
@@ -79,6 +67,13 @@ class Login extends Component {
                   placeholder="Enter email"
                   onChange={this.handleChange}
                 />
+                {this.state.errors.email ? (
+                  <span style={{ color: "red" }}>
+                    {this.state.errors.email}
+                  </span>
+                ) : (
+                  <span></span>
+                )}
               </div>
               <div className="form-group">
                 <label htmlFor="exampleInputPassword1">Password</label>
@@ -91,8 +86,15 @@ class Login extends Component {
                   placeholder="Password"
                   onChange={this.handleChange}
                 />
+                {this.state.errors.password ? (
+                  <span style={{ color: "red" }}>
+                    {this.state.errors.password}
+                  </span>
+                ) : (
+                  <span></span>
+                )}
               </div>
-              {errors.general && <p className="alert">{errors.general}</p>}
+              {errors.general && <span className="alert">{errors.general}</span>}
               <button type="submit" className="btn btn-success btn-block">
                 Login
               </button>
@@ -105,4 +107,15 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  user: state.user,
+  UI: state.UI
+});
+
+const mapActionsToProps = {
+  loginUser
+};
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(Login);

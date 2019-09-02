@@ -13,7 +13,7 @@ class Home extends Component {
   componentDidMount() {
     //get request for post data from /posts route
     axios
-      .get("/posts")
+      .get("https://us-central1-knowledgehub-67e03.cloudfunctions.net/api/posts")
       .then(res => {
         //saving the data into state
         this.setState({ posts: res.data });
