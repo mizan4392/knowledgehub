@@ -1,22 +1,9 @@
 import React, { Component } from "react";
 import "./Login.css";
-import Particles from "react-particles-js";
 //redux
 import { connect } from "react-redux";
-import loginUser from "../../redux/actions/userAction";
+import {loginUser} from "../../redux/actions/userAction";
 
-// ParticalJs params
-const params = {
-  particles: {
-    number: {
-      value: 40,
-      density: {
-        enable: true,
-        value_area: 200
-      }
-    }
-  }
-};
 
 class Login extends Component {
   state = {
@@ -49,7 +36,6 @@ class Login extends Component {
     const { errors } = this.state;
     return (
       <div className="bg container-fluid">
-        <Particles params={params} className="particales" />
         <div className="row">
           <div className="col-md-4 col-sm-4 col-xs-12" />
           <div className="col-md-4 col-sm-4 col-xs-12">
