@@ -1,0 +1,21 @@
+*{
+    color: black;
+}
+img{
+    border-radius: 90px;
+}
+.profile-detalis{
+    color: black !important;
+}
+.bio{
+    color: black !important;
+    font: italic;
+}
+.location{
+    color: black !important;
+    font: italic;
+}
+.website{
+    color: black !important;
+    font: italic;
+}

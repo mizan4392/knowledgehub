@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-//components
+import axios from 'axios';
+ //components
 import Navigation from "./Conmonents/Navigation/Navigation";
 import LoginNavigation from "./Conmonents/LoginNavigation/LoginNavigation";
 //pages
@@ -13,6 +14,8 @@ import Profile from "./Pages/Profile/Profile";
 import AuthRoute from "./util/AuthRoute";
 //Redux
 import { Provider } from "react-redux";
+import { SET_AUTHENTICATED } from './redux/types';
+import { logoutUser , getUserData } from './redux/actions/userAction';
 import store from "./redux/store";
 
 let authenticated;
@@ -20,10 +23,12 @@ const token = localStorage.FBIdtoken;
 if (token) {
   const decodedToken = jwtDecode(token);
   if (decodedToken.exp * 1000 < Date.now()) {
+    store.dispatch(logoutUser())
     window.location.href = "/login";
-    authenticated = false;
   } else {
-    authenticated = true;
+    store.dispatch({type:SET_AUTHENTICATED});
+    axios.defaults.headers.common['Authorization'] = token;
+    store.dispatch(getUserData());
   }
 }
 
@@ -39,13 +44,11 @@ class App extends Component {
               exact
               path="/login"
               component={Login}
-              authenticated={authenticated}
             />
             <AuthRoute
               exact
               path="/signup"
               component={Signup}
-              authenticated={authenticated}
             />
             <Route path="/user/home" component={LoginNavigation} />
             <Route path="/profile" component={Profile} />

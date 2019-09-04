@@ -18,7 +18,7 @@ class Post extends Component {
                   src={userImage}
                   width="50px"
                   height="50px"
-                  style={{ borderRadius: "9px" }}
+                  style={{ borderRadius: "30px" }}
                 />
               </div>
               <div className="col-md-10 test-grid col-sm-10">

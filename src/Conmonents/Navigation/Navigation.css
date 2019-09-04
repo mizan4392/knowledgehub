@@ -1,3 +1,6 @@
 .Nav-bg{
     background: rgb(74, 77, 97);    
 }
+.display{
+    display: none;
+}
