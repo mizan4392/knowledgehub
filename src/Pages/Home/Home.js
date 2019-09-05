@@ -42,7 +42,7 @@ class Home extends Component {
         <div className="row">
           <div className="col-md-8 col-sm-8">{recentPost}</div>
           <div className="col-md-4 col-sm-4 text-center">
-            <div className="card text-center container">
+            <div className="card text-center container mt-3">
               <Profile />
             </div>
           </div>

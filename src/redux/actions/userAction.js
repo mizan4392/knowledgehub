@@ -41,6 +41,15 @@ export const signupUser = (newUserData,history) => dispatch => {
     });
 };
 
+export const uplodeImage = (formData) => (dispatch) =>{
+  dispatch({type:LOADING_USER})
+  axios.post('/user/image',formData)
+    .then(()=>{
+      dispatch(getUserData());
+    })
+    .then(err => console.log(err))
+}
+
 
 export const getUserData = () => dispatch => {
   dispatch({type:LOADING_USER});
