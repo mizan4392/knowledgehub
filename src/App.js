@@ -18,7 +18,6 @@ import { SET_AUTHENTICATED } from './redux/types';
 import { logoutUser , getUserData } from './redux/actions/userAction';
 import store from "./redux/store";
 
-let authenticated;
 const token = localStorage.FBIdtoken;
 if (token) {
   const decodedToken = jwtDecode(token);

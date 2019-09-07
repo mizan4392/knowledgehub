@@ -75,6 +75,15 @@ const setAuthorizationHeader = (token) =>{
   axios.defaults.headers.common['Authorization'] = FBIdtoken;
 }
 
+export const editUserDetailes = (userDetailes) => (dispatch) =>{
+  dispatch({type:LOADING_USER});
+  axios.post('/user',userDetailes)
+    .then(()=>{
+      dispatch(getUserData())
+    })
+    .catch(err => console.log(err));
+}
+
 
 //export default loginUser;
 

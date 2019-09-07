@@ -165,9 +165,6 @@ const mapStateToProps = state => ({
   UI: state.UI
 });
 
-const mapActionsToProps = {
-  signupUser
-};
 export default connect(
   mapStateToProps,
   { signupUser }

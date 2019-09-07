@@ -29,3 +29,14 @@
     background-size: 15px;
     float: right;
 }
+.Like{
+    font-size: .7rem;
+}
+.liked{
+    margin: 0;
+    padding: 0;
+}
+.unlike{
+    padding: 0;
+    margin: 0;
+}

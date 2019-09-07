@@ -2,11 +2,49 @@ import React, { Component } from "react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "./Post.css";
+import like from '../../assets/liked.svg'
+import unlike from '../../assets/unlike.png'
+import { NavLink } from "react-router-dom";
+//redux
+import { connect } from "react-redux";
+import { likePost, unLikePost } from "../../redux/actions/dataAction";
 
 class Post extends Component {
+  likedPost = () => {
+    if (
+      this.props.user.likes &&
+      this.props.user.likes.find(like => like.postId === this.props.postId)
+    )
+      return true;
+    else return false;
+  };
+  likePost = () => {
+    this.props.likePost(this.props.postId);
+  };
+  unlikePost = () => {
+    this.props.likePost(this.props.postId);
+  };
+
   render() {
-    const { body, userImage, userName, createdAt } = this.props;
+    const {
+      body,
+      userImage,
+      userName,
+      createdAt,
+      likeCount,
+      user: { authenticated }
+    } = this.props;
     dayjs.extend(relativeTime);
+
+    const likeButton = !authenticated ? (
+      <NavLink to="/login">
+        <button className="btn btn-light liked"><img src={unlike} width="25px" height="25px"></img></button>
+      </NavLink>
+    ) : this.likedPost() ? (
+      <button onClick={this.unlikePost} className="btn btn-light liked"><img src={like} width="25px" height="25px"></img></button>
+    ) : (
+      <button onClick={this.likePost} className="btn btn-light unlike"><img src={unlike} width="25px" height="25px"></img></button>
+    );
     return (
       <div className="container card-section">
         <div className="card text-info card">
@@ -38,9 +76,10 @@ class Post extends Component {
             <p className="card-text text-left text-style">{body}</p>
           </div>
           <div className="card-footer text-right text-danger btn-style">
-            <a href="#" className="">
-              Love
-            </a>
+            <div>
+              {likeButton}
+            </div>
+
             <a href="#" className=" ">
               Comment
             </a>
@@ -54,4 +93,17 @@ class Post extends Component {
   }
 }
 
-export default Post;
+const mapActionsToProps = {
+  likePost,
+  unLikePost
+};
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(Post);
