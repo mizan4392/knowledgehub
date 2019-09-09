@@ -23,6 +23,7 @@ class Home extends Component {
           createdAt={post.createdAt}
           userImage={post.userImage}
           postId={post.postId}
+          likeCount={post.likeCount}
         />
       ))
     ) : (

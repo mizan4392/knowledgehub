@@ -70,7 +70,7 @@ class Profile extends Component {
         
       )
     ) : (
-      <p>Loading</p>
+      <p>Loading.....</p>
     );
 
     return profileMarkup;

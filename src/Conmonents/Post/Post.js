@@ -22,7 +22,7 @@ class Post extends Component {
     this.props.likePost(this.props.postId);
   };
   unlikePost = () => {
-    this.props.likePost(this.props.postId);
+    this.props.unLikePost(this.props.postId);
   };
 
   render() {
@@ -31,19 +31,18 @@ class Post extends Component {
       userImage,
       userName,
       createdAt,
-      likeCount,
       user: { authenticated }
     } = this.props;
     dayjs.extend(relativeTime);
 
     const likeButton = !authenticated ? (
       <NavLink to="/login">
-        <button className="btn btn-light liked"><img src={unlike} width="25px" height="25px"></img></button>
+        <div><button className="btn btn-light liked"><img src={unlike} width="25px" height="25px" alt="unlike"></img> {this.props.likeCount} Likes</button></div>
       </NavLink>
     ) : this.likedPost() ? (
-      <button onClick={this.unlikePost} className="btn btn-light liked"><img src={like} width="25px" height="25px"></img></button>
+      <div><button onClick={this.unlikePost} className="btn btn-light liked"><img src={like} width="25px" height="25px" alt="unlike"></img></button><span>{this.props.likeCount}  Likes</span></div> 
     ) : (
-      <button onClick={this.likePost} className="btn btn-light unlike"><img src={unlike} width="25px" height="25px"></img></button>
+      <div><button onClick={this.likePost} className="btn btn-light unlike"><img src={unlike} width="25px" height="25px" alt="like"></img></button><span>{this.props.likeCount}  Likes</span></div>
     );
     return (
       <div className="container card-section">
