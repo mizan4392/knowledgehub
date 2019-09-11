@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navigation.css";
+
 //Redux
 import { connect } from "react-redux";
+import CreatePost from "../CreatePost/CreatePost";
 
 class Navigation extends Component {
   render() {
@@ -29,9 +31,7 @@ class Navigation extends Component {
                     </NavLink>
                   </li>
                   <li className="nav-item mr-3">
-                    <NavLink className="nav-link" to="/">
-                      <i className="fas fa-plus fa-lg"></i>
-                    </NavLink>
+                      <CreatePost />
                   </li>
                   <li className="nav-item mr-3">
                   <NavLink className="nav-link" to="/">

@@ -4,3 +4,6 @@
     border-bottom: 1px solid gray;
     width: 80%;
 }
+.modal-backdrop{
+  z-index: 1 !important;
+}

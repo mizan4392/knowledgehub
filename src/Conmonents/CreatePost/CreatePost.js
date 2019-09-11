@@ -1,54 +1,22 @@
 import React, { Component } from "react";
-import "./EditeDetailes.css";
-//redux
-import { connect } from "react-redux";
-import { editUserDetailes } from "../../redux/actions/userAction";
+import "./CreatePost.css";
 
-class EditeDetailes extends Component {
-  state = {
-    bio: "",
-    website: "",
-    location: ""
-  };
-
-  componentDidMount() {
-    this.mapUserDetailesToState(this.props.credentials);
-  }
-  mapUserDetailesToState = credentials => {
-    this.setState({
-      bio: credentials.bio ? credentials.bio : "",
-      website: credentials.website ? credentials.website : "",
-      location: credentials.location ? credentials.location : ""
-    });
-  };
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-  handleSubmmit = () =>{
-    const userDetailes ={
-      bio:this.state.bio,
-      website:this.state.website,
-      location:this.state.location,
-    }
-
-    this.props.editUserDetailes(userDetailes);
-
-  }
+class CreatePost extends Component {
   render() {
     return (
       <div>
         <button
           type="button"
-          className="btn btn-light"
+          className="nav-link nav-btn"
           data-toggle="modal"
-          data-target="#EditeDetailes"
+          data-target="#CreatePost"
         >
-          <i className="fas fa-user-edit"></i>
+          <i className="fas fa-plus fa-lg"></i>
         </button>
 
         <div
           className="modal fade"
-          id="EditeDetailes"
+          id="CreatePost"
           tabIndex="-1"
           role="dialog"
           aria-labelledby="exampleModalLabel"
@@ -77,10 +45,8 @@ class EditeDetailes extends Component {
                       type="text"
                       id="form31"
                       name="bio"
-                      value={this.state.bio}
                       className="in-bg ml-3"
                       placeholder="Update Bio"
-                      onChange={this.handleChange}
                     />
                   </div>
                   <div className=" mb-3">
@@ -91,8 +57,6 @@ class EditeDetailes extends Component {
                       name="website"
                       className="in-bg ml-3"
                       placeholder="your Personal//professional Website"
-                      value={this.state.website}
-                      onChange={this.handleChange}
                     />
                   </div>
                   <div className=" mb-3">
@@ -103,8 +67,6 @@ class EditeDetailes extends Component {
                       name="location"
                       className="in-bg ml-3"
                       placeholder="Enter Your Location"
-                      value={this.state.location}
-                      onChange={this.handleChange}
                     />
                   </div>
                 </form>
@@ -117,7 +79,11 @@ class EditeDetailes extends Component {
                 >
                   Close
                 </button>
-                <button type="button" className="btn btn-primary" onClick={this.handleSubmmit} data-dismiss="modal">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-dismiss="modal"
+                >
                   Save changes
                 </button>
               </div>
@@ -128,12 +94,5 @@ class EditeDetailes extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    credentials: state.user.credentials
-  };
-};
-export default connect(
-  mapStateToProps,
-  { editUserDetailes }
-)(EditeDetailes);
+
+export default CreatePost;

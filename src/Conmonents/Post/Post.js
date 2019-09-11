@@ -7,7 +7,8 @@ import unlike from '../../assets/unlike.png'
 import { NavLink } from "react-router-dom";
 //redux
 import { connect } from "react-redux";
-import { likePost, unLikePost } from "../../redux/actions/dataAction";
+import { likePost, unLikePost} from "../../redux/actions/dataAction";
+import DeletePost from "../DeletePost/DeletePost";
 
 class Post extends Component {
   likedPost = () => {
@@ -31,7 +32,7 @@ class Post extends Component {
       userImage,
       userName,
       createdAt,
-      user: { authenticated }
+      user: { authenticated ,credentials}
     } = this.props;
     dayjs.extend(relativeTime);
 
@@ -44,6 +45,10 @@ class Post extends Component {
     ) : (
       <div><button onClick={this.likePost} className="btn btn-light unlike"><img src={unlike} width="25px" height="25px" alt="like"></img></button><span>{this.props.likeCount}  Likes</span></div>
     );
+
+    const deletPost = authenticated && userName === credentials.userName ? (
+      <DeletePost postId = {this.props.postId}/>
+    ) : null;
     return (
       <div className="container card-section">
         <div className="card text-info card">
@@ -67,7 +72,7 @@ class Post extends Component {
                 </p>
               </div>
               <div className="col-md-1 test-grid col-sm-1">
-                <input type="button" className="btn-bg"></input>
+                {deletPost}
               </div>
             </div>
           </div>

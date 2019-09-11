@@ -19,16 +19,6 @@
 .test-grid{
  flex-wrap: nowrap !important;
 }
-.btn-bg{
-    background: none;
-    background-image: url("../../assets/drop-down.png") !important;
-    border: none;
-    height:15px;
-    width: 15px;
-    background-repeat: no-repeat;
-    background-size: 15px;
-    float: right;
-}
 .Like{
     font-size: .7rem;
 }

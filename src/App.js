@@ -4,7 +4,6 @@ import jwtDecode from "jwt-decode";
 import axios from 'axios';
  //components
 import Navigation from "./Conmonents/Navigation/Navigation";
-import LoginNavigation from "./Conmonents/LoginNavigation/LoginNavigation";
 //pages
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
@@ -49,7 +48,6 @@ class App extends Component {
               path="/signup"
               component={Signup}
             />
-            <Route path="/user/home" component={LoginNavigation} />
             <Route path="/profile" component={Profile} />
           </Switch>
         </Provider>
