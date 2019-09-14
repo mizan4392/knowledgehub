@@ -5,8 +5,9 @@ import { connect } from "react-redux";
 import { deletePost } from "../../redux/actions/dataAction";
 
 class DeletePost extends Component {
-  handleDeletePost = () => {
+  handleDeletePost = (e) => {
     this.props.deletePost(this.props.postId);
+    window.location.href = "/";
   };
   render() {
     return (
@@ -20,16 +21,16 @@ class DeletePost extends Component {
           <i className="fas fa-trash"></i>
         </button>
         <div
-          class="modal fade"
+          className="modal fade"
           id="DeleteModel"
-          tabindex="-1"
+          tabIndex="-1"
           role="dialog"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-body">
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content">
+              <div className="modal-body">
                 <p>Are you sure !! You want to delete the post?</p>
               </div>
               <div>

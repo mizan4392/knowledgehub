@@ -2,3 +2,7 @@
     background: transparent;
     border: none;
 }
+.delete-btn{
+    margin: 18px;
+    cursor: pointer;
+}

@@ -31,19 +31,20 @@ class Navigation extends Component {
                     </NavLink>
                   </li>
                   <li className="nav-item mr-3">
+                    <NavLink to="/">
                       <CreatePost />
-                  </li>
-                  <li className="nav-item mr-3">
-                  <NavLink className="nav-link" to="/">
-                  <i className="fas fa-bell fa-lg"></i>
                     </NavLink>
                   </li>
                   <li className="nav-item mr-3">
-                  <NavLink className="nav-link" to="/">
-                  <i className="fas fa-sign-out-alt fa-lg"></i>
+                    <NavLink className="nav-link" to="/">
+                      <i className="fas fa-bell fa-lg"></i>
                     </NavLink>
                   </li>
-                  
+                  <li className="nav-item mr-3">
+                    <NavLink className="nav-link" to="/">
+                      <i className="fas fa-sign-out-alt fa-lg"></i>
+                    </NavLink>
+                  </li>
                 </Fragment>
               ) : (
                 <Fragment>
