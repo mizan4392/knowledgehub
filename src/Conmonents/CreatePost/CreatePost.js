@@ -27,7 +27,7 @@ class CreatePost extends Component {
   handleSubmmit = e => {
     if (this.state.body) {
       this.props.createPost({ body: this.state.body });
-      window.location.href = "/";
+     
     } else {
       this.setState({ errors: "Cann't Be Empty" });
     }
@@ -84,7 +84,6 @@ class CreatePost extends Component {
                       placeholder="Write Your Post"
                       onChange={this.handleChange}
                     />
-                    
                     {showError}
                   </div>
                 </form>
@@ -102,7 +101,7 @@ class CreatePost extends Component {
                   type="button"
                   className="btn btn-primary"
                   onClick={this.handleSubmmit}
-                  data-dismiss={!this.state.errors ? "null" : "modal"}
+                  data-dismiss="modal"
                 >
                   Post
                 </button>

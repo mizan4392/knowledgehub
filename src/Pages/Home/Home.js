@@ -9,6 +9,7 @@ import { getPosts} from '../../redux/actions/dataAction';
 
 class Home extends Component {
 
+  
   componentDidMount() {
     this.props.getPosts()
   }

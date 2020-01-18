@@ -77,7 +77,7 @@ class Profile extends Component {
   }
 }
 
-const mapActionsToProps = { logoutUser , uplodeImage}
+const mapActionsToProps = { logoutUser,uplodeImage}
 
 const mapStateToProps = (state, ownProps) => {
   return {

@@ -5,11 +5,19 @@ import { connect } from "react-redux";
 import { deletePost } from "../../redux/actions/dataAction";
 
 class DeletePost extends Component {
+
   handleDeletePost = (e) => {
-    this.props.deletePost(this.props.postId);
-    window.location.href = "/";
+    
+    //console.log(this.props.postId)
+
+    this.props.deletePost(this.props.postId)
+    
+    
   };
+
+  
   render() {
+    //console.log(this.props.postId)
     return (
       <div>
         <button
