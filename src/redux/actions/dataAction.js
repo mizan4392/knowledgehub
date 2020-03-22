@@ -13,6 +13,7 @@ import axios from 'axios'
 
 // get All Posts
 export const getPosts = () => dispatch => {
+  console.log("found")
   dispatch({ type: LOADING_DATA })
   // get request for post data from /posts route
   axios
@@ -31,6 +32,8 @@ export const getPosts = () => dispatch => {
       })
     })
 }
+
+
 
 // like a post
 
