@@ -19,6 +19,7 @@ import store from "./redux/store";
 
 const token = localStorage.FBIdtoken;
 if (token) {
+  console.log(token)
   const decodedToken = jwtDecode(token);
   if (decodedToken.exp * 1000 < Date.now()) {
     store.dispatch(logoutUser())
