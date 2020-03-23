@@ -21,6 +21,7 @@ const token = localStorage.FBIdtoken;
 if (token) {
   console.log(token)
   const decodedToken = jwtDecode(token);
+  console.log(decodedToken)
   if (decodedToken.exp * 1000 < Date.now()) {
     store.dispatch(logoutUser())
     window.location.href = "/login";
